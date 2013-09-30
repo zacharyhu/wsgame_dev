@@ -1,0 +1,5 @@
+/*!CK:4072260085!*//*1380040557,179355671*/
+
+if (self.CavalryLogger) { CavalryLogger.start_js(["2VsAR"]); }
+
+__d("SubscribeSwapButton",["Button","cx","DOM","Event","Parent","Style"],function(a,b,c,d,e,f){var g=b('Button'),h=b('cx'),i=b('DOM'),j=b('Event'),k=b('Parent'),l=b('Style'),m={},n={},o=0,p,q;function r(u,v){g.setLabel(u,v);g.setIcon(u,n[i.getID(u)]);t.updateWidth(u);q=null;}function s(u,v,w,x){g.setLabel(u,v);g.setIcon(u,w);t.updateWidth(u);q=u;p&&p.remove();p=j.listen(u,'mouseleave',function(){r(u,x);});}var t={setSuppressNextMouseEnter:function(u,v){m[u]=v;},updateWidth:function(u){var v=l.get(u,'width');if(parseFloat(v)>=parseFloat(o)){o=v;}else l.set(u,'min-width',o);},setFollowingIcon:function(u){g.setIcon(u,n[i.getID(u)]);},init:function(u,v,w,x,y,z,aa){var ba=i.getID(u);m[ba]=aa;n[ba]=x;this.updateWidth(u);j.listen(document.documentElement,{mouseenter:function(ca){var da=k.byClass(ca.getTarget(),"_5lzj");if(da!=q&&q)r(q,v);}});j.listen(u,'mouseenter',function(){if(m[ba]||u==q){m[ba]=false;return;}s(u,w,y,v,x);});}};e.exports=t;});

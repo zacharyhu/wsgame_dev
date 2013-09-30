@@ -98,4 +98,43 @@ class AuthUser extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	/*
+	 * 验证用户密码方法
+	*
+	*
+	*/
+	
+	public function encrypt($pass)
+	{
+		return md5($pass);
+	}
+	
+	public function validatePassword($password)
+	{
+		return $this->encrypt($password)===$this->password;
+	}
+	
+	/*
+	 * 加密密码
+	*
+	*
+	*
+	*/
+	
+	protected function beforeSave(){
+	
+		$this->update_date = new CDbException('Now()');
+		if (parent::beforeSave()){//保存之前
+			if($this->isNewRecord){
+				$this->password=$this->encrypt($this->password);
+			}else {
+				$this->password=$this->encrypt($this->password);
+			}
+			return true;
+		}else{
+			return  false;
+		}
+	
+	
+	}
 }
