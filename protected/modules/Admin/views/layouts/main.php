@@ -15,6 +15,7 @@
 <body>
 
 <?php $this->widget('bootstrap.widgets.TbNavbar',array(
+		'type'=>'inverse',
     'items'=>array(
         array(
             'class'=>'bootstrap.widgets.TbMenu',
@@ -42,7 +43,7 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by WSgame.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by WASUgame.<br/>
 		All Rights Reserved.<br/>
 	</div><!-- footer -->
 

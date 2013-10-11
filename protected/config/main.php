@@ -7,7 +7,7 @@ Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'游戏基地技术平台',
+	'name'=>'娓告垙鍩哄湴',
 
 	// preloading 'log' component
 	'preload'=>array('log','bootstrap'),
@@ -30,6 +30,13 @@ return array(
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
 		*/
+			'Admin'=>array(
+					'class'=>'application.modules.Admin.AdminModule',
+					),
+			'TvTest'=>array(
+					'class'=>'application.modules.TvTest.TvTestModule',
+					),
+			
 			'gii'=>array(
 					'generatorPaths'=>array(
 							'bootstrap.gii',
