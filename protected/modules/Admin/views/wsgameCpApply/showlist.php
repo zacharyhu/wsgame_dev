@@ -6,7 +6,7 @@ echo "您还可以：".CHtml::link('提交新游戏链接',array('create'))
 ?>
 
 <?php
-    $cp_code='501';
+    $cp_code=Yii::app()->user->name;
  $this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'wsgame-cp-apply-grid',
  		'type'=>'striped bordered condensed',

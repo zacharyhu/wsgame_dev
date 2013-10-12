@@ -37,7 +37,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('bootstrap.widgets.TbGridView',array(
+<?php
+
+     $this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'wsgame-cp-apply-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
@@ -48,11 +50,18 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'game_id',
 		'URL',
 		'update_time',
-		/*
 		'check_status',
-		*/
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
+             //添加自定义按钮
+			'template'=>'{view}{testcheck}{delete}',
+            'buttons'=>array(
+                 'testcheck'=>array(
+                     'label'=>'验收此条目',
+					'imageUrl'=>Yii::app()->request->baseUrl.'/images/edit.png',
+                     'url'=>'Yii::app()->createUrl("Admin/wsgameCpApply/testcheck",array("id"=>$data->id))',
+                  ),
+             ),
 		),
 	),
 )); ?>

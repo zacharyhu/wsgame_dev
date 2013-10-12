@@ -42,14 +42,15 @@ class WsgameCpApply extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cp_code, game_name, game_id, URL,check_status', 'required'),
-			array(' game_id, ', 'numerical', 'integerOnly'=>true),
+			array('game_name,URL', 'required'),
+			array('game_id, ', 'numerical', 'integerOnly'=>true),
 			array('game_name', 'length', 'max'=>50),
 			array('check_status', 'length', 'max'=>3),
 			array('URL', 'length', 'max'=>100),
+			array('id, cp_code, game_name, game_id, URL, check_status,cp_code,check_result,check_oper','safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, cp_code, game_name, game_id, URL,  check_status', 'safe', 'on'=>'search'),
+			array('id, cp_code, game_name, game_id, URL, check_status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -124,6 +125,23 @@ class WsgameCpApply extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 				'criteria'=>$criteria,
 		));
+	}
+	protected function beforeSave(){
+		if (parent::beforeSave()){
+			if ($this->isNewRecord){
+				//提交验收
+				$this->cp_code = Yii::app()->user->name;
+				$this->check_status = '0';
+			}else {
+				//修改验收
+				$this->update_time=date('Y-m-d H:i:s');
+			}	
+			
+			return true;
+		}else {
+			
+			return false;
+		}
 	}
 
 }

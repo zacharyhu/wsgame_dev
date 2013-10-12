@@ -70,7 +70,7 @@ class WsgameCpApplyController extends Controller
 		{
 			$model->attributes=$_POST['WsgameCpApply'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('showlist',));
 		}
 
 		$this->render('create',array(
@@ -99,6 +99,25 @@ class WsgameCpApplyController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
+		));
+	}
+	
+	public function actionTestcheck($id)
+	{
+		$model=$this->loadModel($id);
+	
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+	
+		if(isset($_POST['WsgameCpApply']))
+		{
+			$model->attributes=$_POST['WsgameCpApply'];
+			if($model->save())
+				$this->redirect(array('admin',));
+		}
+	
+		$this->render('testcheck',array(
+				'model'=>$model,
 		));
 	}
 
