@@ -36,7 +36,6 @@ return array(
 			'TvTest'=>array(
 					'class'=>'application.modules.TvTest.TvTestModule',
 					),
-			
 			'gii'=>array(
 					'generatorPaths'=>array(
 							'bootstrap.gii',
@@ -51,6 +50,7 @@ return array(
 					'username'=>'user_name', //default:username
 					'delimeter'=>'@', //default:-
 					'debug'=>true, //default :false
+// 					'debug'=>false, //default :false
 					'pageSize'=>10, // default : 15
 					'superUser' =>'Authority', //default: Authorizer
 					'css'=>'srbac.css', //default: srbac.css
@@ -137,6 +137,7 @@ return array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
 				),
+			
 				// uncomment the following to show log messages on web pages
 				
 				array(

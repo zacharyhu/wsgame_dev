@@ -48,7 +48,7 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by WSGAME.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by WSGAME DEV.<br/>
 		All Rights Reserved.<br/>
 	</div><!-- footer -->
 

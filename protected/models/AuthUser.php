@@ -39,7 +39,7 @@ class AuthUser extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, user_name, user_display, user_email, user_phone, password', 'required'),
+			array(' user_name, user_display, password', 'required'),
 			array('id', 'numerical', 'integerOnly'=>true),
 			array('user_name, user_display, user_email', 'length', 'max'=>50),
 			array('user_phone', 'length', 'max'=>20),
@@ -99,7 +99,6 @@ class AuthUser extends CActiveRecord
 		));
 	}
 	/*
-	 * 验证用户密码方法
 	*
 	*
 	*/
@@ -115,7 +114,6 @@ class AuthUser extends CActiveRecord
 	}
 	
 	/*
-	 * 加密密码
 	*
 	*
 	*
@@ -123,8 +121,8 @@ class AuthUser extends CActiveRecord
 	
 	protected function beforeSave(){
 	
-		$this->update_date = new CDbException('Now()');
-		if (parent::beforeSave()){//保存之前
+		$this->update_time = new CDbException('Now()');
+		if (parent::beforeSave()){
 			if($this->isNewRecord){
 				$this->password=$this->encrypt($this->password);
 			}else {
@@ -136,5 +134,9 @@ class AuthUser extends CActiveRecord
 		}
 	
 	
+	}
+	public function getUserDisplay($username){
+		$namearr = AuthUser::model()->findByAttributes(array('user_name'=>$username));
+		return $namearr->user_display;
 	}
 }
